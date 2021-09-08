@@ -1,0 +1,30 @@
+{
+  "_format": "hh-sol-artifact-1",
+  "contractName": "Example",
+  "sourceName": "contracts/Example.sol",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "bool",
+          "name": "isExample",
+          "type": "bool"
+        }
+      ],
+      "name": "isExample",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x6080604052348015600f57600080fd5b5060968061001e6000396000f3fe6080604052348015600f57600080fd5b506004361060285760003560e01c8063b49a6f5c14602d575b600080fd5b604960048036036020811015604157600080fd5b50351515605d565b604080519115158252519081900360200190f35b9056fea2646970667358221220a75ca4fd682786a73dd2e9418e3620d3508843130ec1026a31138255a5f58ef564736f6c63430007060033",
+  "deployedBytecode": "0x6080604052348015600f57600080fd5b506004361060285760003560e01c8063b49a6f5c14602d575b600080fd5b604960048036036020811015604157600080fd5b50351515605d565b604080519115158252519081900360200190f35b9056fea2646970667358221220a75ca4fd682786a73dd2e9418e3620d3508843130ec1026a31138255a5f58ef564736f6c63430007060033",
+  "linkReferences": {},
+  "deployedLinkReferences": {}
+}
