@@ -18,19 +18,25 @@ import { Listener, Provider } from "@ethersproject/providers";
 import { FunctionFragment, EventFragment, Result } from "@ethersproject/abi";
 import { TypedEventFilter, TypedEvent, TypedListener } from "./commons";
 
-interface IExampleInterface extends ethers.utils.Interface {
+interface MockExpansionNoFeeInterface extends ethers.utils.Interface {
   functions: {
-    "isExample(bool)": FunctionFragment;
+    "lootExpansionTokenUri(uint256)": FunctionFragment;
   };
 
-  encodeFunctionData(functionFragment: "isExample", values: [boolean]): string;
+  encodeFunctionData(
+    functionFragment: "lootExpansionTokenUri",
+    values: [BigNumberish]
+  ): string;
 
-  decodeFunctionResult(functionFragment: "isExample", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "lootExpansionTokenUri",
+    data: BytesLike
+  ): Result;
 
   events: {};
 }
 
-export class IExample extends Contract {
+export class MockExpansionNoFee extends Contract {
   connect(signerOrProvider: Signer | Provider | string): this;
   attach(addressOrName: string): this;
   deployed(): Promise<this>;
@@ -71,58 +77,64 @@ export class IExample extends Contract {
     toBlock?: string | number | undefined
   ): Promise<Array<TypedEvent<EventArgsArray & EventArgsObject>>>;
 
-  interface: IExampleInterface;
+  interface: MockExpansionNoFeeInterface;
 
   functions: {
-    isExample(
-      isExample: boolean,
+    lootExpansionTokenUri(
+      lootId: BigNumberish,
       overrides?: CallOverrides
-    ): Promise<[boolean]>;
+    ): Promise<[string] & { tokenUri: string }>;
 
-    "isExample(bool)"(
-      isExample: boolean,
+    "lootExpansionTokenUri(uint256)"(
+      lootId: BigNumberish,
       overrides?: CallOverrides
-    ): Promise<[boolean]>;
+    ): Promise<[string] & { tokenUri: string }>;
   };
 
-  isExample(isExample: boolean, overrides?: CallOverrides): Promise<boolean>;
-
-  "isExample(bool)"(
-    isExample: boolean,
+  lootExpansionTokenUri(
+    lootId: BigNumberish,
     overrides?: CallOverrides
-  ): Promise<boolean>;
+  ): Promise<string>;
+
+  "lootExpansionTokenUri(uint256)"(
+    lootId: BigNumberish,
+    overrides?: CallOverrides
+  ): Promise<string>;
 
   callStatic: {
-    isExample(isExample: boolean, overrides?: CallOverrides): Promise<boolean>;
-
-    "isExample(bool)"(
-      isExample: boolean,
+    lootExpansionTokenUri(
+      lootId: BigNumberish,
       overrides?: CallOverrides
-    ): Promise<boolean>;
+    ): Promise<string>;
+
+    "lootExpansionTokenUri(uint256)"(
+      lootId: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<string>;
   };
 
   filters: {};
 
   estimateGas: {
-    isExample(
-      isExample: boolean,
+    lootExpansionTokenUri(
+      lootId: BigNumberish,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
-    "isExample(bool)"(
-      isExample: boolean,
+    "lootExpansionTokenUri(uint256)"(
+      lootId: BigNumberish,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
   };
 
   populateTransaction: {
-    isExample(
-      isExample: boolean,
+    lootExpansionTokenUri(
+      lootId: BigNumberish,
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
-    "isExample(bool)"(
-      isExample: boolean,
+    "lootExpansionTokenUri(uint256)"(
+      lootId: BigNumberish,
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
   };

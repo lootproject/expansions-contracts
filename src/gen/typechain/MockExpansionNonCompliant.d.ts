@@ -18,19 +18,22 @@ import { Listener, Provider } from "@ethersproject/providers";
 import { FunctionFragment, EventFragment, Result } from "@ethersproject/abi";
 import { TypedEventFilter, TypedEvent, TypedListener } from "./commons";
 
-interface ExampleInterface extends ethers.utils.Interface {
+interface MockExpansionNonCompliantInterface extends ethers.utils.Interface {
   functions: {
-    "isExample(bool)": FunctionFragment;
+    "tokenUri(uint256)": FunctionFragment;
   };
 
-  encodeFunctionData(functionFragment: "isExample", values: [boolean]): string;
+  encodeFunctionData(
+    functionFragment: "tokenUri",
+    values: [BigNumberish]
+  ): string;
 
-  decodeFunctionResult(functionFragment: "isExample", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "tokenUri", data: BytesLike): Result;
 
   events: {};
 }
 
-export class Example extends Contract {
+export class MockExpansionNonCompliant extends Contract {
   connect(signerOrProvider: Signer | Provider | string): this;
   attach(addressOrName: string): this;
   deployed(): Promise<this>;
@@ -71,58 +74,58 @@ export class Example extends Contract {
     toBlock?: string | number | undefined
   ): Promise<Array<TypedEvent<EventArgsArray & EventArgsObject>>>;
 
-  interface: ExampleInterface;
+  interface: MockExpansionNonCompliantInterface;
 
   functions: {
-    isExample(
-      isExample: boolean,
+    tokenUri(
+      lootId: BigNumberish,
       overrides?: CallOverrides
-    ): Promise<[boolean]>;
+    ): Promise<[string]>;
 
-    "isExample(bool)"(
-      isExample: boolean,
+    "tokenUri(uint256)"(
+      lootId: BigNumberish,
       overrides?: CallOverrides
-    ): Promise<[boolean]>;
+    ): Promise<[string]>;
   };
 
-  isExample(isExample: boolean, overrides?: CallOverrides): Promise<boolean>;
+  tokenUri(lootId: BigNumberish, overrides?: CallOverrides): Promise<string>;
 
-  "isExample(bool)"(
-    isExample: boolean,
+  "tokenUri(uint256)"(
+    lootId: BigNumberish,
     overrides?: CallOverrides
-  ): Promise<boolean>;
+  ): Promise<string>;
 
   callStatic: {
-    isExample(isExample: boolean, overrides?: CallOverrides): Promise<boolean>;
+    tokenUri(lootId: BigNumberish, overrides?: CallOverrides): Promise<string>;
 
-    "isExample(bool)"(
-      isExample: boolean,
+    "tokenUri(uint256)"(
+      lootId: BigNumberish,
       overrides?: CallOverrides
-    ): Promise<boolean>;
+    ): Promise<string>;
   };
 
   filters: {};
 
   estimateGas: {
-    isExample(
-      isExample: boolean,
+    tokenUri(
+      lootId: BigNumberish,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
-    "isExample(bool)"(
-      isExample: boolean,
+    "tokenUri(uint256)"(
+      lootId: BigNumberish,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
   };
 
   populateTransaction: {
-    isExample(
-      isExample: boolean,
+    tokenUri(
+      lootId: BigNumberish,
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
-    "isExample(bool)"(
-      isExample: boolean,
+    "tokenUri(uint256)"(
+      lootId: BigNumberish,
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
   };
