@@ -1,17 +1,17 @@
 {
   "_format": "hh-sol-artifact-1",
-  "contractName": "IExample",
-  "sourceName": "contracts/interfaces/IExample.sol",
+  "contractName": "ERC165",
+  "sourceName": "@openzeppelin/contracts/introspection/ERC165.sol",
   "abi": [
     {
       "inputs": [
         {
-          "internalType": "bool",
-          "name": "isExample",
-          "type": "bool"
+          "internalType": "bytes4",
+          "name": "interfaceId",
+          "type": "bytes4"
         }
       ],
-      "name": "isExample",
+      "name": "supportsInterface",
       "outputs": [
         {
           "internalType": "bool",
